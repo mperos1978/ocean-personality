@@ -1,5 +1,7 @@
 # OCEAN – Persönlichkeitstyp-Vorhersage
 
+Persönliches Projekt von **mperos1978**: [ocean-personality auf GitHub](https://github.com/mperos1978/ocean-personality).
+
 ## 1. Überblick
 
 Dieses Projekt untersucht eine überwachte Klassifikationsaufgabe: Aus 19 Frageantworten sowie Alter, Geschlecht und Schreibhand wird ein Persönlichkeitstyp vorhergesagt. Eine deutschsprachige Streamlit-App stellt den Fragebogen bereit und zeigt die Vorhersage mit einem animierten Unterwasserdesign an.
@@ -15,7 +17,7 @@ Die Kursdaten basieren laut Projektbeschreibung auf einem auf Kaggle veröffentl
 | Überkontrolliert | Overcontroller |
 | Unterkontrolliert | Undercontroller |
 
-Für die persönliche Reproduktion wird die bereinigte Datei `data/MP_data_clean.csv` mit 23 Spalten einschließlich `target` verwendet.
+Für die Reproduktion wird die bereinigte Datei `data/data_clean_MP.csv` mit 23 Spalten einschließlich `target` verwendet.
 
 Die Zielklassen wurden aus den Frageantworten abgeleitet, die auch als Eingaben verwendet werden. Die Ergebnisse beschreiben deshalb die Nachbildung dieser vorhandenen Klassenzuordnung; sie sind keine unabhängige psychologische Validierung.
 
@@ -54,15 +56,16 @@ Alter eingeben, Geschlecht und Schreibhand auswählen und die 19 Aussagen bewert
 
 ## 2. Einrichtung
 
-Die folgenden Schritte beziehen sich auf Windows 11 mit VS Code. Dieser Beitrag liegt im gemeinsamen Repository `big-five-personality` im Unterordner **`MP`** auf der Branch **`main`**. Alle folgenden Terminalbefehle werden innerhalb von `MP` ausgeführt, wo `MP_app.py` liegt. Für den lokalen Betrieb ist kein Hosting erforderlich.
+Die folgenden Schritte beziehen sich auf Windows 11 mit VS Code und Python 3.14. Alle Terminalbefehle werden im Hauptordner dieses persönlichen Repositorys ausgeführt: **`ocean-personality`**. App und Notebooks liegen direkt dort; ein zusätzlicher Unterordner `MP` ist nicht erforderlich. Für den lokalen Betrieb ist kein Hosting erforderlich.
 
-Nach dem Herunterladen oder Klonen des gemeinsamen Repositorys in VS Code über **Datei → Ordner öffnen** direkt den Unterordner **`MP`** öffnen. Dadurch starten Terminal und Notebooks im passenden Arbeitsordner. Falls das Terminal bereits im Hauptordner `big-five-personality` steht, zunächst wechseln:
+Das Repository über GitHub herunterladen oder mit Git klonen. Zum Klonen im Terminal des gewünschten übergeordneten Ordners ausführen:
 
 ```powershell
-cd MP
+git clone https://github.com/mperos1978/ocean-personality.git
+cd ocean-personality
 ```
 
-Diesen Befehl nur verwenden, wenn das Terminal noch im Repository-Hauptordner steht. Wenn `MP` bereits als Ordner geöffnet ist, ist kein weiterer Wechsel nötig.
+Beim ZIP-Download das Archiv zunächst entpacken. In VS Code über **Datei → Ordner öffnen** den entpackten Projektordner öffnen, in dem `MP_app.py` liegt. Danach **Terminal → Neues Terminal** wählen. Der Ordnername kann beim ZIP-Download `ocean-personality-main` lauten; die relativen Dateipfade funktionieren dort ebenso.
 
 ### 1. Daten beschaffen
 
@@ -96,11 +99,11 @@ Die versionsgebundenen Abhängigkeiten für EDA, Modelling, Notebook-Ausführung
 
 In VS Code für beide Notebooks oben rechts den Python-Kernel aus `.venv` wählen.
 
-**Zuerst `MP EDA Personality.ipynb`:** Alle Zellen von oben nach unten ausführen. Die Speicherzelle erzeugt die bereinigte Datei unter `data/MP_data_clean.csv`.
+**Zuerst `MP EDA Personality.ipynb`:** Alle Zellen von oben nach unten ausführen. Die Speicherzelle erzeugt die bereinigte Datei unter `data/data_clean_MP.csv`.
 
-**Datenpfad im Modelling:** Die Ladezelle liest `data/MP_data_clean.csv`. Ihre Pfadprüfungen und Fehlermeldungen müssen ebenfalls diesen Dateinamen verwenden. Ein manueller Kopierschritt ist nicht erforderlich. Die separat gepflegten Gruppendateien sind nicht Teil dieser Umstellung.
+**Danach `MP_modelling.ipynb`:** Die Ladezelle liest `data/data_clean_MP.csv`. Ein manueller Kopierschritt ist nicht erforderlich.
 
-**Danach `MP_modelling.ipynb`:** Den Hauptworkflow von oben nach unten bis einschließlich des Speicherschritts ausführen. Die optionale Zusatzanalyse ist für die App nicht erforderlich. Das Modelltraining kann mehrere Minuten dauern. Der Speicherschritt erzeugt:
+Den Hauptworkflow bis einschließlich **Schritt 15** von oben nach unten ausführen. Die optionale Zusatzanalyse in Schritt 16 ist für die App nicht erforderlich. Das Modelltraining kann mehrere Minuten dauern. Der Speicherschritt erzeugt:
 
 ```text
 models/best_pipeline.joblib
@@ -121,7 +124,8 @@ Das Terminal während der Nutzung geöffnet lassen. Mit **Strg + C** wird die Ap
 ### Lokale Ordnerstruktur
 
 ```text
-MP/                            # persönlicher Unterordner in big-five-personality
+ocean-personality/             # Hauptordner des persönlichen Repositorys
+├── .gitignore
 ├── MP_readme.md
 ├── MP_requirements.txt
 ├── MP_app.py
@@ -129,7 +133,7 @@ MP/                            # persönlicher Unterordner in big-five-personali
 ├── MP_modelling.ipynb
 ├── data/                       # lokal beschaffen beziehungsweise erzeugen
 │   ├── data.csv
-│   └── MP_data_clean.csv
+│   └── data_clean_MP.csv
 ├── models/                     # lokal durch Training erzeugen
 │   └── best_pipeline.joblib
 └── .venv/                      # lokal erzeugte Python-Umgebung
@@ -142,13 +146,19 @@ Die App findet die Pipeline relativ zu ihrem eigenen Speicherort: im Unterordner
 | Meldung oder Problem | Lösung |
 |---|---|
 | Pipeline fehlt | Modelling ausführen oder prüfen, ob `models/best_pipeline.joblib` vorhanden ist. |
-| CSV nicht gefunden | `data/data.csv` für EDA beziehungsweise `data/MP_data_clean.csv` für Modelling prüfen. |
+| CSV nicht gefunden | `data/data.csv` für EDA beziehungsweise `data/data_clean_MP.csv` für Modelling prüfen. |
 | Bibliothek fehlt | Abhängigkeiten in der ausgewählten Python-Umgebung installieren. |
 | Andere Python-Umgebung verwendet | Die Befehle mit `.\.venv\Scripts\python.exe` ausführen und denselben Notebook-Kernel wählen. |
 | Browser öffnet sich nicht | Die lokale Adresse aus dem Streamlit-Terminal öffnen. |
 
-## 3. Gruppenorganisation
+## 3. Persönliches Repository und Prüfung
 
-Das gemeinsame Repository verwendet die Branch **`main`**. Die Beiträge der Teammitglieder sind dort in eigenen Ordnern organisiert. Dieser Beitrag liegt unter **`MP/`** und enthält `MP_app.py`, `MP_requirements.txt`, `MP_readme.md` sowie die beiden Notebooks. Ein eigener Team-Branch für diesen Beitrag wird nicht mehr verwendet. Die gemeinsam veröffentlichte App wird als Gruppe ausgewählt. Das persönliche Repository und eine eventuelle Online-Veröffentlichung sind separate spätere Schritte.
+Dieses Repository ist die persönliche Präsentation des im Rahmen eines Gruppenprojekts erarbeiteten Beitrags. Es wird unabhängig vom gemeinsamen Repository gepflegt. Die Projektdateien liegen direkt auf der Branch **`main`** im Repository-Hauptordner. Die Dateinamen mit `MP` bleiben erhalten.
 
-In GitHub gehören die Dokumentation, App, Requirements und Notebooks. Datensätze und Joblib-Dateien sowie die virtuelle Umgebung und generierte Zwischendateien werden nicht hochgeladen. Die im Strukturbeispiel gezeigten Daten- und Modelldateien entstehen lokal durch die beschriebenen Schritte. Die Datei `MP/models/best_pipeline.joblib` darf gemäß Aufgabenstellung nicht im Repository committed sein; beim Speichern des Modellings wird sie lokal neu erzeugt. Eine lokale Joblib-Datei im Abgabeordner ersetzt nicht die dokumentierten Reproduktionsschritte.
+In GitHub gehören die Dokumentation, App, Requirements, Notebooks und `.gitignore`. Datensätze und Joblib-Dateien sowie die virtuelle Umgebung und generierte Zwischendateien werden nicht hochgeladen. Die im Strukturbeispiel gezeigten Daten- und Modelldateien entstehen lokal durch die beschriebenen Schritte. Die `.gitignore` schließt unter anderem `data/`, `models/` und `.venv/` aus.
+
+Der lokale Ablauf wurde in einer neu eingerichteten Python-Umgebung geprüft: Requirements installieren, EDA ausführen, Modelling ausführen, Pipeline speichern und App starten. Auch die Erstellung und Aktualisierung der Vorhersage wurden getestet.
+
+Die App berechnet das Ergebnis nach dem Klick auf **„Persönlichkeitstyp vorhersagen“**. Werden Antworten geändert, muss der Button erneut angeklickt werden. Ein berechnetes Ergebnis bleibt in derselben Browser-Sitzung für die zusätzlichen Typ-Erklärungen erhalten. Eine neue Sitzung beginnt ohne Ergebnis.
+
+Eine Online-Veröffentlichung ist ein optionaler späterer Schritt; für die lokale Nutzung ist sie nicht erforderlich.
