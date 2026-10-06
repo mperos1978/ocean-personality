@@ -1,0 +1,18 @@
+# Python-Umgebung
+.venv/
+
+# Lokale Daten und trainierte Modelle
+data/
+models/
+*.csv
+*.joblib
+
+# Automatisch erzeugte Dateien
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+catboost_info/
+
+# Lokale Zugangsdaten
+.env
+.streamlit/secrets.toml
