@@ -128,6 +128,46 @@ def ship_svg():
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" aria-hidden="true"><g fill="#afe1e9" stroke="#afe1e9" stroke-linejoin="round"><path d="M28 132 Q230 155 482 123 L441 183 Q251 221 78 174Z"/><rect x="142" y="82" width="220" height="59" rx="9"/><rect x="177" y="54" width="131" height="36" rx="4"/><rect x="225" y="18" width="34" height="47" rx="3"/><path d="M111 133 V60 M105 70 h23 M379 135 V76 M365 82 h29" fill="none" stroke-width="7"/><path d="M78 134 V113 H435 V128" fill="none" stroke-width="4"/></g><g fill="#17576d"><rect x="162" y="97" width="26" height="17" rx="4"/><rect x="204" y="97" width="26" height="17" rx="4"/><rect x="246" y="97" width="26" height="17" rx="4"/><rect x="288" y="97" width="26" height="17" rx="4"/><circle cx="158" cy="160" r="7"/><circle cx="220" cy="165" r="7"/><circle cx="282" cy="165" r="7"/><circle cx="344" cy="158" r="7"/></g></svg>'
 
 
+def diver_svg():
+    """Taucher mit anatomischen Formen, Neoprenanzug und Tauchausruestung."""
+    return '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180" aria-hidden="true">
+    <defs>
+        <linearGradient id="diver-suit" x2="0" y2="1"><stop stop-color="#286977"/><stop offset="1" stop-color="#102b3a"/></linearGradient>
+        <linearGradient id="diver-skin" x2="0" y2="1"><stop stop-color="#f6c7a1"/><stop offset="1" stop-color="#c58664"/></linearGradient>
+        <linearGradient id="diver-tank" x2="0" y2="1"><stop stop-color="#f3e3a0"/><stop offset="1" stop-color="#b59650"/></linearGradient>
+    </defs>
+    <path d="M124 99 Q109 114 98 135 L63 126 Q56 124 53 131 Q52 139 61 144 L101 153 Q110 153 116 144 L146 115Z" fill="#153b49" stroke="#0c2836" stroke-width="2"/>
+    <g class="diver-fin back-fin"><path d="M62 130 L36 131 L15 153 Q43 162 65 142Z" fill="#7bd3c4" stroke="#21545f" stroke-width="2"/><path d="M26 150 L53 137" stroke="#b6f2df" stroke-width="3"/></g>
+    <path d="M170 90 Q185 96 197 91 L217 72 Q220 68 225 73 Q230 78 225 84 L204 105 Q197 112 187 109 L159 104Z" fill="#153b49" stroke="#0c2836" stroke-width="2"/>
+    <path d="M219 72 Q219 65 225 64 L236 59 Q240 59 239 63 L231 69 L244 66 Q249 68 245 72 L231 81 L225 84Z" fill="url(#diver-skin)"/>
+    <rect x="129" y="48" width="55" height="26" rx="12" transform="rotate(-19 156 61)" fill="url(#diver-tank)" stroke="#735f3d" stroke-width="2"/>
+    <path d="M147 45 L154 70 M166 41 L174 64" stroke="#455963" stroke-width="5"/>
+    <path d="M134 76 Q155 65 177 74 Q192 82 187 96 Q178 115 147 115 L115 106 L120 89Z" fill="url(#diver-suit)" stroke="#0c2836" stroke-width="2"/>
+    <path d="M139 77 Q146 94 142 111 M165 74 Q172 89 168 107" stroke="#92d7d0" stroke-width="5" fill="none"/>
+    <path d="M148 107 L164 111" stroke="#eacb69" stroke-width="6"/>
+    <path d="M124 95 Q110 90 93 90 L71 78 Q65 73 61 79 Q57 86 64 92 L89 108 Q98 112 109 112 L140 112Z" fill="url(#diver-suit)" stroke="#0c2836" stroke-width="2"/>
+    <g class="diver-fin front-fin"><path d="M69 79 L44 66 L18 74 Q24 97 58 93 L66 91Z" fill="#80deca" stroke="#21545f" stroke-width="2"/><path d="M28 77 L55 85 M30 85 L54 89" stroke="#c1f5e2" stroke-width="3"/></g>
+    <path d="M183 76 L199 70 L208 81 L192 91Z" fill="url(#diver-skin)"/>
+    <path d="M194 51 Q201 38 215 43 Q229 48 230 61 L236 69 Q238 73 231 75 Q231 87 219 88 Q205 89 199 75Z" fill="url(#diver-skin)" stroke="#a66f54" stroke-width="1.5"/>
+    <path d="M193 58 Q187 46 198 37 Q214 26 228 44 L225 52 Q216 44 206 49 L201 62Z" fill="#153744"/>
+    <path d="M196 57 L225 54" stroke="#193d48" stroke-width="5"/>
+    <path d="M209 52 Q220 49 229 55 L232 66 Q224 72 211 67Z" fill="#a3e7e8" stroke="#e4fafa" stroke-width="3"/>
+    <path d="M212 54 L223 54 L226 61 L215 64Z" fill="#355c70" opacity=".7"/>
+    <circle cx="220" cy="58" r="2" fill="#112633"/>
+    <circle cx="230" cy="77" r="5" fill="#263e49" stroke="#d3e5db" stroke-width="2"/>
+    <path d="M231 80 Q246 105 214 117 Q189 124 185 92" fill="none" stroke="#263e49" stroke-width="5"/>
+    <path d="M171 84 Q183 85 191 103 L204 119" fill="none" stroke="#102e3c" stroke-width="16" stroke-linecap="round"/>
+    <path d="M171 84 Q183 85 191 103" fill="none" stroke="#317683" stroke-width="9" stroke-linecap="round"/>
+    <path d="M201 114 L212 118 Q219 116 223 120 L232 126 Q234 130 230 132 L220 127 L226 134 Q225 138 221 135 L211 128 L204 127Z" fill="url(#diver-skin)"/>
+    <g fill="none" stroke="#b9f4ee" stroke-width="1.5" opacity=".8"><circle cx="246" cy="62" r="4"/><circle cx="251" cy="45" r="6"/><circle cx="244" cy="24" r="8"/></g>
+    </svg>'''
+
+
+def mine_svg():
+    """Kugelfoermige Unterwassermine mit Kontaktstiften und Metallnieten."""
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" aria-hidden="true"><defs><radialGradient id="mine-metal" cx="32%" cy="25%" r="80%"><stop stop-color="#a1b6b6"/><stop offset=".45" stop-color="#50666b"/><stop offset="1" stop-color="#1c343e"/></radialGradient></defs><g stroke="#849b9e" stroke-width="10" stroke-linecap="round"><path d="M80 36 V15 M111 49 L127 32 M124 80 H145 M111 111 L127 128 M80 124 V145 M49 111 L32 128 M36 80 H15 M49 49 L32 32"/></g><g fill="#b0c2be" stroke="#48646b" stroke-width="2"><circle cx="80" cy="14" r="6"/><circle cx="128" cy="31" r="6"/><circle cx="146" cy="80" r="6"/><circle cx="128" cy="129" r="6"/><circle cx="80" cy="146" r="6"/><circle cx="31" cy="129" r="6"/><circle cx="14" cy="80" r="6"/><circle cx="31" cy="31" r="6"/></g><circle cx="80" cy="80" r="48" fill="url(#mine-metal)" stroke="#314e58" stroke-width="3"/><path d="M36 67 Q80 83 124 67 L125 82 Q80 98 35 82Z" fill="#c6b671" opacity=".8"/><path d="M40 97 Q80 116 120 97" fill="none" stroke="#152e38" stroke-width="3"/><ellipse cx="64" cy="49" rx="20" ry="8" fill="#d5e8de" opacity=".3" transform="rotate(-24 64 49)"/><g fill="#c4d2ca"><circle cx="48" cy="91" r="3"/><circle cx="63" cy="97" r="3"/><circle cx="80" cy="100" r="3"/><circle cx="97" cy="97" r="3"/><circle cx="112" cy="91" r="3"/></g><circle cx="80" cy="115" r="6" fill="#29464e" stroke="#839899" stroke-width="2"/></svg>'
+
+
 def apply_ocean_design():
     """Unterwasserfarben, bewegte Dekoration und gut erkennbare Auswahlkarten."""
     man = '<circle cx="40" cy="17" r="11"/><path d="M26 33 h28 v29 h-8 v24 h-11 V62 h-9Z"/><path d="M26 36 l-9 26 M54 36 l9 26" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>'
@@ -165,15 +205,27 @@ def apply_ocean_design():
     .ocean-hero p {max-width:580px;color:#cfe7ee;font-size:17px;line-height:1.65;}
     .sea-scene {position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
     .sea-scene::before {content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 160deg at 50% -20%,transparent 0deg 9deg,#93eff00b 10deg 15deg,transparent 16deg 30deg);}
-    .sea-fish {position:absolute;width:155px;opacity:.38;animation:swim 19s ease-in-out infinite alternate;}
-    .sea-fish:nth-child(1) {top:18%;left:1%;}
-    .sea-fish:nth-child(2) {top:48%;right:1%;width:185px;animation-delay:-7s;}
-    .sea-fish:nth-child(3) {top:78%;left:2%;animation-delay:-12s;}
-    .sea-fish:nth-child(4) {top:8%;right:3%;animation-delay:-4s;}
-    .sea-diver {position:absolute;width:180px;opacity:.25;top:62%;left:0%;transform:rotate(-18deg);animation:float 10s ease-in-out infinite alternate;}
-    .sea-diver.second {top:30%;left:auto;right:0%;transform:scaleX(-1) rotate(-18deg);animation-delay:-5s;}
+    .sea-fish {position:absolute;left:0;top:var(--lane);width:var(--size);opacity:.42;animation:travel var(--duration) linear infinite;animation-delay:var(--delay);will-change:transform;}
+    .sea-fish.to-left {animation-direction:reverse;}
+    .sea-creature-drift {animation:drift var(--bob-duration) ease-in-out infinite;animation-delay:var(--delay);}
+    .sea-creature-facing {transform:scaleX(1);}
+    .to-left .sea-creature-facing {transform:scaleX(-1);}
+    .sea-fish svg,.sea-diver svg {display:block;width:100%;height:auto;}
+    .sea-diver {position:absolute;width:220px;opacity:.62;top:61%;left:0;animation:diver-travel 42s linear infinite;animation-delay:-9s;will-change:transform;}
+    .sea-diver .diver-drift {animation:diver-drift 7s ease-in-out infinite alternate;}
+    .sea-diver.second {top:27%;animation-direction:reverse;animation-duration:53s;animation-delay:-32s;}
+    .sea-diver.second .diver-facing {transform:scaleX(-1);}
+    .sea-mine {position:absolute;left:0;top:0;width:100px;opacity:.55;animation:mine-drift 110s linear infinite;animation-delay:-12s;will-change:transform;}
+    .sea-mine svg {display:block;width:100%;height:auto;}
+    .diver-fin {transform-box:fill-box;transform-origin:85% 50%;animation:fin-kick 1.8s ease-in-out infinite alternate;}
+    .diver-fin.back-fin {animation-delay:-.9s;}
     .bubble {position:absolute;bottom:-60px;border:1px solid #b3f6f77a;border-radius:50%;background:#abecff0d;animation:rise 17s linear infinite;}
-    @keyframes swim {to {translate:35px -20px;}}
+    @keyframes travel {from {transform:translateX(calc(-100% - 40px));} to {transform:translateX(calc(100vw + 40px));}}
+    @keyframes drift {0%,100% {transform:translateY(calc(var(--bob) * -1)) rotate(-4deg);} 50% {transform:translateY(var(--bob)) rotate(4deg);}}
+    @keyframes diver-travel {from {transform:translateX(-260px);} to {transform:translateX(calc(100vw + 40px));}}
+    @keyframes diver-drift {from {transform:translateY(-24px) rotate(-12deg);} to {transform:translateY(24px) rotate(5deg);}}
+    @keyframes fin-kick {from {transform:rotate(-9deg);} to {transform:rotate(13deg);}}
+    @keyframes mine-drift {from {transform:translate(-120px,-120px) rotate(-15deg);} to {transform:translate(calc(100vw + 120px),calc(100vh + 120px)) rotate(95deg);}}
     @keyframes float {to {translate:18px -35px;}}
     @keyframes rise {to {translate:30px -110vh;}}
     @keyframes sink {0%{transform:translateY(calc(-100vh + 240px)) rotate(75deg);} 87%{transform:translateY(-22px) rotate(75deg);} 96%{transform:translateY(3px) rotate(6deg);} 100%{transform:translateY(0) rotate(9deg);}}
@@ -221,13 +273,38 @@ def apply_ocean_design():
     .type-info small {display:block;color:#aecfdc;font-size:14px;margin-bottom:15px;}
     .type-info svg {width:140px;float:right;margin:0 0 12px 18px;}
     .type-info::after {content:"";display:block;clear:both;}
-    @media(max-width:700px) {.sea-fish,.sea-diver{opacity:.14;} .type-overview{grid-template-columns:repeat(2,minmax(0,1fr));} [data-testid="stForm"]{padding:16px;} .stRadio [role="radiogroup"] label{min-width:75px;} .result-card{padding:18px;} .result-type strong{font-size:23px;}}
-    @media(prefers-reduced-motion:reduce) {.sea-fish,.sea-diver,.bubble,.result-fish svg,.sea-ship{animation:none;} .sea-ship{transform:rotate(9deg);}}
+    @media(max-width:700px) {.sea-fish{width:calc(var(--size) * .7);opacity:.3;} .sea-diver{width:165px;opacity:.4;} .sea-mine{width:70px;opacity:.4;} .type-overview{grid-template-columns:repeat(2,minmax(0,1fr));} [data-testid="stForm"]{padding:16px;} .stRadio [role="radiogroup"] label{min-width:75px;} .result-card{padding:18px;} .result-type strong{font-size:23px;}}
+    @media(prefers-reduced-motion:reduce) {.sea-fish,.sea-creature-drift,.sea-diver,.diver-drift,.diver-fin,.sea-mine,.bubble,.result-fish svg,.sea-ship{animation:none;} .sea-fish,.sea-diver{left:var(--rest-left,5%);} .sea-diver.second{left:auto;right:5%;} .sea-mine{left:5%;top:10%;} .sea-ship{transform:rotate(9deg);}}
     ''' + icon_css + '</style>'
-    diver = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 140"><g fill="#9adce9" stroke="#9adce9" stroke-width="8" stroke-linecap="round"><circle cx="190" cy="46" r="16"/><path d="M166 62 L113 86 L72 71 M118 84 L80 113 M153 69 L183 85 L207 71" fill="none"/><path d="M65 66 l-40 -9 23 22Z M74 108 l-28 18 40 -4Z"/><rect x="126" y="42" width="38" height="18" rx="8" transform="rotate(-25 145 51)"/><rect x="194" y="39" width="20" height="11" rx="4" fill="#07374e" stroke-width="3"/></g></svg>'
-    fishes = ''.join(f'<div class="sea-fish">{fish_svg(name)}</div>' for name in FISH_NAMES)
+    diver = diver_svg()
+    # Negative delays distribute the creatures across the screen immediately.
+    creatures = [
+        ("Moderate", 12, 135, 26, -4, False, 30, 5),
+        ("Resilient", 24, 190, 43, -27, True, 45, 9),
+        ("Overcontroller", 43, 180, 32, -6, False, 36, 7),
+        ("Undercontroller", 79, 130, 38, -26, True, 22, 6),
+        ("Moderate", 55, 105, 23, -14, True, 48, 6),
+        ("Resilient", 68, 170, 47, -10, False, 40, 10),
+        ("Overcontroller", 8, 145, 35, -24, True, 26, 8),
+        ("Undercontroller", 88, 105, 31, -7, False, 18, 5),
+        ("Moderate", 33, 120, 29, -11, False, 38, 7),
+        ("Undercontroller", 58, 115, 41, -18, False, 32, 8),
+        ("Overcontroller", 76, 160, 37, -21, True, 35, 9),
+        ("Resilient", 15, 155, 49, -38, False, 28, 8),
+    ]
+    fishes = ''.join(
+        f'<div class="sea-fish {"to-left" if reverse else "to-right"}" '
+        f'style="--lane:{lane}%;--size:{size}px;--duration:{duration}s;'
+        f'--delay:{delay}s;--bob:{bob}px;--bob-duration:{bob_duration}s;'
+        f'--rest-left:{5 + index * 7}%;">'
+        f'<div class="sea-creature-drift"><div class="sea-creature-facing">'
+        f'{fish_svg(name)}</div></div></div>'
+        for index, (name, lane, size, duration, delay, reverse, bob, bob_duration)
+        in enumerate(creatures)
+    )
     bubbles = ''.join(f'<i class="bubble" style="left:{position}%;width:{size}px;height:{size}px;animation-delay:-{index * 3}s;"></i>' for index, (position, size) in enumerate([(6,18),(18,9),(35,14),(65,10),(83,22),(94,12)]))
-    st.markdown(css + f'<div class="sea-scene" aria-hidden="true">{fishes}<div class="sea-diver">{diver}</div><div class="sea-diver second">{diver}</div>{bubbles}<div class="seabed"></div><div class="sea-ship">{ship_svg()}</div></div>', unsafe_allow_html=True)
+    diver_html = f'<div class="diver-drift"><div class="diver-facing">{diver}</div></div>'
+    st.markdown(css + f'<div class="sea-scene" aria-hidden="true">{fishes}<div class="sea-diver">{diver_html}</div><div class="sea-diver second">{diver_html}</div><div class="sea-mine">{mine_svg()}</div>{bubbles}<div class="seabed"></div><div class="sea-ship">{ship_svg()}</div></div>', unsafe_allow_html=True)
 
 
 def show_ocean_result(prediction):
