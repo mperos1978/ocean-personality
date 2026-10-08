@@ -1,5 +1,9 @@
 # OCEAN – Persönlichkeitstyp-Vorhersage
 
+**Online-App:** [OCEAN-App öffnen](https://mp-ocean-personality.streamlit.app/)
+
+Die App kann direkt im Browser verwendet werden, ohne lokale Installation.
+
 Persönliches Projekt von **mperos1978**: [ocean-personality auf GitHub](https://github.com/mperos1978/ocean-personality).
 
 ## 1. Überblick
