@@ -10,6 +10,9 @@ from urllib.parse import quote
 import joblib
 import pandas as pd
 import streamlit as st
+import hashlib
+import tempfile
+import gdown
 
 
 # Deutsche Übersetzungen der Originalaussagen aus codebook.txt.
@@ -329,8 +332,41 @@ def show_type_information(personality_type):
 
 @st.cache_resource
 def load_pipeline(model_path):
-    """Die bereits trainierte Pipeline einmal laden und wiederverwenden."""
-    return joblib.load(model_path)
+    """Lokales Modell laden oder die gepruefte Drive-Datei herunterladen."""
+    path = Path(model_path)
+
+    if not path.is_file():
+        path.parent.mkdir(parents=True, exist_ok=True)
+
+        expected_hash = (
+            "4b91bc50042514adfd093d0e26738d673"
+            "1c3d8fa28626d121927322383d19c88"
+        )
+
+        with tempfile.TemporaryDirectory(dir=path.parent) as temp_dir:
+            download_path = Path(temp_dir) / "best_pipeline.joblib"
+
+            with st.spinner("Das Modell wird geladen ..."):
+                result = gdown.download(
+                    id="1VcDOKEiCEtP7N9TQcBWKo2yKqdEBaaTL",
+                    output=str(download_path),
+                    quiet=True,
+                    use_cookies=False,
+                )
+
+            if result is None or not download_path.is_file():
+                raise RuntimeError("Modelldownload fehlgeschlagen.")
+
+            actual_hash = hashlib.sha256(
+                download_path.read_bytes()
+            ).hexdigest()
+
+            if actual_hash != expected_hash:
+                raise ValueError("Die Modelldatei stimmt nicht ueberein.")
+
+            download_path.replace(path)
+
+    return joblib.load(path)
 
 
 def make_input_frame(answers, age, gender, hand, feature_order):
@@ -358,10 +394,7 @@ def main():
 
     # Portabler Pfad: relativ zur app.py, unabhängig vom Terminal-Arbeitsordner.
     model_path = Path(__file__).resolve().parent / "models" / "best_pipeline.joblib"
-    if not model_path.is_file():
-        st.error("Die trainierte Pipeline fehlt. Führe zuerst das Modelling-Notebook aus und lege die erzeugte best_pipeline.joblib im Ordner models neben app.py ab.")
-        st.stop()
-
+    
     try:
         pipeline = load_pipeline(str(model_path))
     except Exception:
