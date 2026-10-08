@@ -46,7 +46,11 @@ QUESTION_GROUPS = {
 }
 
 GENDER_VALUES = {"Männlich": "Male", "Weiblich": "Female", "Andere": "Other"}
-HAND_VALUES = {"Rechts": "Right", "Links": "Left"}
+HAND_VALUES = {
+    "Rechts": "Right",
+    "Links": "Left",
+    "Beidhändig": "Both",
+}
 
 TYPE_LABELS = {
     "Moderate": "Moderat",
@@ -177,7 +181,21 @@ def apply_ocean_design():
     woman = '<circle cx="40" cy="17" r="11"/><path d="M30 33 h20 l14 35 H16Z"/><path d="M32 68 v18 M48 68 v18 M28 37 l-12 25 M52 37 l12 25" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>'
     question = '<text x="40" y="72" text-anchor="middle" font-family="sans-serif" font-size="78" font-weight="bold">?</text>'
     hand = '<path d="M28 85 Q16 72 10 57 Q8 50 14 48 Q18 47 24 59 V28 Q24 20 30 20 Q36 20 36 28 V17 Q36 9 42 9 Q48 9 48 17 V25 Q48 17 54 17 Q60 17 60 25 V33 Q60 26 66 26 Q72 26 72 34 V60 Q72 76 60 85Z"/>'
-    icons = [man, woman, question, f'<g transform="translate(80 0) scale(-1 1)">{hand}</g>', hand]
+
+    both_hands = (
+        f'<g transform="translate(39 24) scale(-0.48 0.48)">{hand}</g>'
+        f'<g transform="translate(41 24) scale(0.48 0.48)">{hand}</g>'
+    )
+
+    icons = [
+        man,
+        woman,
+        question,
+        f'<g transform="translate(80 0) scale(-1 1)">{hand}</g>',
+        hand,
+        both_hands,
+    ]
+    
     icon_css = ""
     for index, shapes in enumerate(icons):
         svg = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 96" fill="#90e5ee" color="#90e5ee">{shapes}</svg>'
@@ -410,7 +428,12 @@ def main():
         with demographic_columns[0]:
             gender = st.radio("Geschlecht", list(GENDER_VALUES), horizontal=True, key="gender_choice")
         with demographic_columns[1]:
-            hand = st.radio("Schreibhand", ["Links", "Rechts"], horizontal=True, key="hand_choice")
+                        hand = st.radio(
+                "Schreibhand",
+                ["Links", "Rechts", "Beidhändig"],
+                horizontal=True,
+                key="hand_choice",
+            )
 
         st.subheader("Wie sehr stimmst du den Aussagen zu?")
         st.markdown("**1** = Stimme nicht zu · **2** = Stimme eher nicht zu · **3** = Neutral · **4** = Stimme eher zu · **5** = Stimme zu")
